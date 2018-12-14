@@ -2,7 +2,6 @@ import _orderBy from 'lodash/orderBy';
 import React, { Component } from 'react';
 import data from '../data';
 import FilmList from './FilmList';
-import FilmForm from './FilmForm';
 
 class App extends Component {
     state = {
@@ -30,7 +29,6 @@ class App extends Component {
         }
         return (
             <div className="ui container">
-                <FilmForm/>
                 <FilmList films={films}
                           toggleFeatured={this.toggleFeatured}/>
             </div>

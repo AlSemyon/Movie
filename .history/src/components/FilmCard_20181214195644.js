@@ -6,7 +6,7 @@ const FilmCard = ({film, toggleFeatured}) => (
     <div className="ui card">
         <div className="image">
             <span className="ui green label ribbon"> $ {film.price}</span>
-            <Featured featured={film.featured} toggleFeatured={() => toggleFeatured(film.id)}/>
+            <Featured featured={film.featured}/>
             <img src={film.im} alt={film.title} />
         </div>
 

@@ -2,7 +2,6 @@ import _orderBy from 'lodash/orderBy';
 import React, { Component } from 'react';
 import data from '../data';
 import FilmList from './FilmList';
-import FilmForm from './FilmForm';
 
 class App extends Component {
     state = {
@@ -11,16 +10,14 @@ class App extends Component {
 
     componentDidMount() {
         this.setState({
-            films: this.sortFilms(data.films)
+            films: _orderBy(data.films, ['featured', 'title'], ['desc', 'asc'])
         })
     }
 
-    sortFilms = (films) => _orderBy(films, ['featured', 'title'], ['desc', 'asc']);
+    sortFilms = (films) => _orderBy(data.films, ['featured', 'title'], ['desc', 'asc']);
     
     toggleFeatured = (id) =>this.setState({
-        films: this.sortFilms(this.state.films.map(
-            film => film.id === id ? {...film, featured: !film.featured} : film
-        ))
+
     })
 
     render() {
@@ -30,9 +27,7 @@ class App extends Component {
         }
         return (
             <div className="ui container">
-                <FilmForm/>
-                <FilmList films={films}
-                          toggleFeatured={this.toggleFeatured}/>
+                <FilmList films={films}/>
             </div>
         );
     }

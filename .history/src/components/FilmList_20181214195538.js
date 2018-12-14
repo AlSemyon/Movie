@@ -11,15 +11,14 @@ const FilmList = ({films, toggleFeatured}) => (
                      message="Not found any films in store"/>
         )
         : (
-            films.map(film => <FilmCard key={film.id} film={film} toggleFeatured={toggleFeatured}/>)
+            films.map(film => <FilmCard key={film.id} film={film}/>)
         )
         }
     </div>
 )
 
 FilmList.propTypes = {
-    films: PropTypes.array.isRequired,
-    toggleFeatured: PropTypes.func.isRequired
+    films: PropTypes.array.isRequired
 }
 
 FilmList.defaultProps = {

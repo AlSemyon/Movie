@@ -11,7 +11,7 @@ const FilmList = ({films, toggleFeatured}) => (
                      message="Not found any films in store"/>
         )
         : (
-            films.map(film => <FilmCard key={film.id} film={film} toggleFeatured={toggleFeatured}/>)
+            films.map(film => <FilmCard key={film.id} film={film}/>)
         )
         }
     </div>

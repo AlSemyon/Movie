@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Featured = ({featured, toggleFeatured}) => (
-    <span onClick={toggleFeatured}>
+    <span>
         <a className={`ui right corner label ${featured ? 'yellow' : ''}`}>
             <i className={`start icon`}/>
         </a>
@@ -11,7 +11,6 @@ const Featured = ({featured, toggleFeatured}) => (
 
 Featured.propTypes = {
     featured: PropTypes.bool.isRequired,
-    toggleFeatured: PropTypes.func.isRequired
 }
 
 Featured.defaultProps = {
