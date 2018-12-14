@@ -1,0 +1,18 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types'
+import FilmCard from './FilmCard';
+
+
+const FilmList = ({films}) => (
+    <div className="ui cards four">
+        {
+            films.map(film => <FilmCard key={film.id} film={film}/>)
+        }
+    </div>
+)
+
+FilmList.propTypes = {
+    films: PropTypes.array.isRequired
+}
+
+export default FilmCard;
