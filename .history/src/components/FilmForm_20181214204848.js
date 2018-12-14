@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactImageFallback from 'react-image-fallback'
 
 class FilmForm extends Component {
     state = {
@@ -8,8 +7,7 @@ class FilmForm extends Component {
         duration: 0,
         price: 0,
         director: '',
-        featured: false,
-        im: ''
+        featured: false
     }
 
     handleChange = ({ target }) => this.setState({
@@ -17,16 +15,12 @@ class FilmForm extends Component {
             parseFloat(target.value) : target.value
     })
 
-    handleToggleChange = ({ target }) => this.setState({
-        [target.name]: !this.state[target.name]
-    })
-
     handleSubmit = e => {
         e.preventDefault();
     }
 
     render() {
-        const {title, description, duration, price, director, featured, im} = this.state;
+        const {title, description, duration, price, director, featured} = this.state;
         return (
             <div className="ui grid">
                 <div className="sixteen wide column">
@@ -80,27 +74,12 @@ class FilmForm extends Component {
                         <div className="field">
                             <label htmlFor="featured">Film director</label>
                             <input id="featured"
+                                   placeholder="film director"
                                    type="checkbox"
                                    name="featured"
-                                   onChange={this.handleToggleChange}
+                                   onChange={this.handleChange}
                                    checked={featured}/>
                         </div>
-
-                        <div className="field">
-                            <label htmlFor="im">Poster URL</label>
-                            <input id="im"
-                                   placeholder="url for film"
-                                   type="text"
-                                   name="im"
-                                   onChange={this.handleChange}
-                                   value={im}/>
-                        </div>
-
-                        <ReactImageFallback
-                            src={im}
-                            alt="film poster"
-                            className="ui image"
-                        />
                         <div className="field">
                             <button className="ui button">Send</button>
                         </div>

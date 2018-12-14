@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactImageFallback from 'react-image-fallback'
 
 class FilmForm extends Component {
     state = {
@@ -8,8 +7,7 @@ class FilmForm extends Component {
         duration: 0,
         price: 0,
         director: '',
-        featured: false,
-        im: ''
+        featured: false
     }
 
     handleChange = ({ target }) => this.setState({
@@ -18,7 +16,7 @@ class FilmForm extends Component {
     })
 
     handleToggleChange = ({ target }) => this.setState({
-        [target.name]: !this.state[target.name]
+        featured: !this.state.featured
     })
 
     handleSubmit = e => {
@@ -26,7 +24,7 @@ class FilmForm extends Component {
     }
 
     render() {
-        const {title, description, duration, price, director, featured, im} = this.state;
+        const {title, description, duration, price, director, featured} = this.state;
         return (
             <div className="ui grid">
                 <div className="sixteen wide column">
@@ -85,22 +83,6 @@ class FilmForm extends Component {
                                    onChange={this.handleToggleChange}
                                    checked={featured}/>
                         </div>
-
-                        <div className="field">
-                            <label htmlFor="im">Poster URL</label>
-                            <input id="im"
-                                   placeholder="url for film"
-                                   type="text"
-                                   name="im"
-                                   onChange={this.handleChange}
-                                   value={im}/>
-                        </div>
-
-                        <ReactImageFallback
-                            src={im}
-                            alt="film poster"
-                            className="ui image"
-                        />
                         <div className="field">
                             <button className="ui button">Send</button>
                         </div>
