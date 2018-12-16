@@ -22,7 +22,7 @@ const FilmList = ({films, toggleFeatured, editFilm, removeFilm}) => (
 )
 
 FilmList.propTypes = {
-    films: PropTypes.array.isRequired,
+    films: PropTypes.arr.isRequired,
     toggleFeatured: PropTypes.func.isRequired,
     editFilm: PropTypes.func.isRequired,
     removeFilm: PropTypes.func.isRequired

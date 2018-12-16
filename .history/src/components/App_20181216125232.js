@@ -32,7 +32,7 @@ class App extends Component {
 
     saveFilm = film => film.id ? this.updateFilm(film) : this.addFilm(film);
 
-    selectFilmForEdit = film => this.setState({
+    selectFilmFordit = film => this.setState({
         selectedFilm: film,
         showForm: true
     })
@@ -68,14 +68,13 @@ class App extends Component {
             <div className="ui container">
                 <Nav showForm={this.showForm}/>
                 {
-                    this.state.showForm ? <FilmForm saveFilm={this.saveFilm}
+                    this.state.showForm ? <FilmForm saveFilm={this.saveFilm} 
                                                     closeForm={this.closeForm}
                                                     film={this.state.selectedFilm}/> 
                                         : null
                 }
                 
                 <FilmList films={films}
-                          editFilm ={this.selectFilmForEdit}
                           removeFilm={this.removeFilm}
                           toggleFeatured={this.toggleFeatured}/>
             </div>

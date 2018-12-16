@@ -9,7 +9,6 @@ import Nav from './Nav';
 class App extends Component {
     state = {
         films: [],
-        selectedFilm: {},
         showForm: false
     }
 
@@ -24,19 +23,6 @@ class App extends Component {
         showForm: false
     })
 
-    updateFilm = (film) => this.setState(({films}) => ({
-        films: this.sortFilms(films.map(f => f.id !== film.id ? f : film)),
-        showForm: false,
-        selectedFilm: {}
-    }))
-
-    saveFilm = film => film.id ? this.updateFilm(film) : this.addFilm(film);
-
-    selectFilmForEdit = film => this.setState({
-        selectedFilm: film,
-        showForm: true
-    })
-
     removeFilm = (idFilm) =>this.setState(({films}) => ({
         films: films.filter(film => film.id !== idFilm)
     }))
@@ -45,10 +31,7 @@ class App extends Component {
         showForm: !this.state.showForm
     })
 
-    closeForm = () => this.setState({
-        showForm: false,
-        selectedFilm: {}
-    })
+    closeForm = () => this.setState({showForm: false})
 
     sortFilms = (films) => _orderBy(films, ['featured', 'title'], ['desc', 'asc']);
     
@@ -68,14 +51,10 @@ class App extends Component {
             <div className="ui container">
                 <Nav showForm={this.showForm}/>
                 {
-                    this.state.showForm ? <FilmForm saveFilm={this.saveFilm}
-                                                    closeForm={this.closeForm}
-                                                    film={this.state.selectedFilm}/> 
-                                        : null
+                    this.state.showForm ? <FilmForm saveFilm={this.addFilm} closeForm={this.closeForm}/> : null
                 }
                 
                 <FilmList films={films}
-                          editFilm ={this.selectFilmForEdit}
                           removeFilm={this.removeFilm}
                           toggleFeatured={this.toggleFeatured}/>
             </div>

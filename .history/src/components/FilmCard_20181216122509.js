@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Featured from './Featured';
 
-const FilmCard = ({film, toggleFeatured, editFilm, removeFilm}) => (
+const FilmCard = ({film, toggleFeatured}) => (
     <div className="ui card">
         <div className="image">
             <span className="ui green label ribbon"> $ {film.price}</span>
@@ -42,9 +42,7 @@ FilmCard.propTypes = {
         im: PropTypes.string.isRequired,
         featured: PropTypes.bool.isRequired
     }).isRequired,
-    toggleFeatured: PropTypes.func.isRequired,
-    editFilm: PropTypes.func.isRequired,
-    removeFilm: PropTypes.func.isRequired
+    toggleFeatured: PropTypes.func.isRequired
 }
 
 export default FilmCard;

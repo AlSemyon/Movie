@@ -34,9 +34,9 @@ class FilmForm extends Component {
     }
 
     static  getDerivedStateFromProps(nextProps, state) {
-        console.log(state.id)
+        console.log(state.date.id)
 
-        if (nextProps.film.id && nextProps.film.id !== state.data.id) {
+        if (nextProps.film.id && nextProps.film.id !== state.date.id) {
             return {
                 data: nextProps.film
             }
@@ -52,8 +52,8 @@ class FilmForm extends Component {
     validate = (data) => {
         let errors = {};
         if(!data.title) errors.title = "This field cann`t be blank";
-        if(data.duration <= 0) errors.duration = "Too soer, isn`t it?";
-        if(data.price <= 0) errors.price = "Too cheap, isn`t it?";
+        if(!data.duration > 0) errors.duration = "Too soer, isn`t it?";
+        if(!data.price > 0) errors.price = "Too cheap, isn`t it?";
         if(!data.director) errors.director = "This field cann`t be blank";
         return errors;
     }

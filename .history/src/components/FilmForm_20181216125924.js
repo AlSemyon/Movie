@@ -3,16 +3,6 @@ import ReactImageFallback from 'react-image-fallback'
 import PropTypes from 'prop-types';
 import FormMessage from './FormMessage';
 
-const initialData = {
-    title: '',
-    duration: 0,
-    price: 0,
-    director: '',
-    featured: false,
-    im: '',
-    id: null 
-}
-
 class FilmForm extends Component {
     state = {
         data: {
@@ -33,27 +23,11 @@ class FilmForm extends Component {
         }
     }
 
-    static  getDerivedStateFromProps(nextProps, state) {
-        console.log(state.id)
-
-        if (nextProps.film.id && nextProps.film.id !== state.data.id) {
-            return {
-                data: nextProps.film
-            }
-        } 
-        if (!nextProps.film.id && state.data.id) {
-            return {
-                data: initialData
-            }
-        }
-        return null;
-    }
-
     validate = (data) => {
         let errors = {};
         if(!data.title) errors.title = "This field cann`t be blank";
-        if(data.duration <= 0) errors.duration = "Too soer, isn`t it?";
-        if(data.price <= 0) errors.price = "Too cheap, isn`t it?";
+        if(!data.duration > 0) errors.duration = "Too soer, isn`t it?";
+        if(!data.price > 0) errors.price = "Too cheap, isn`t it?";
         if(!data.director) errors.director = "This field cann`t be blank";
         return errors;
     }
@@ -163,14 +137,6 @@ class FilmForm extends Component {
     }
 }
 FilmForm.propTypes = {
-    film: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        director: PropTypes.string.isRequired,
-        duration: PropTypes.number.isRequired,
-        price: PropTypes.number.isRequired,
-        im: PropTypes.string.isRequired,
-        featured: PropTypes.bool.isRequired
-    }).isRequired,
     closeForm: PropTypes.func.isRequired, 
     saveFilm: PropTypes.func.isRequired
 }

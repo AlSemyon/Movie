@@ -69,13 +69,13 @@ class App extends Component {
                 <Nav showForm={this.showForm}/>
                 {
                     this.state.showForm ? <FilmForm saveFilm={this.saveFilm}
+                                                    editFilm ={selectFilmForEdit}
                                                     closeForm={this.closeForm}
                                                     film={this.state.selectedFilm}/> 
                                         : null
                 }
                 
                 <FilmList films={films}
-                          editFilm ={this.selectFilmForEdit}
                           removeFilm={this.removeFilm}
                           toggleFeatured={this.toggleFeatured}/>
             </div>

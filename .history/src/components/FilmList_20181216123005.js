@@ -13,9 +13,7 @@ const FilmList = ({films, toggleFeatured, editFilm, removeFilm}) => (
         : (
             films.map(film => <FilmCard key={film.id} 
                                         film={film} 
-                                        toggleFeatured={toggleFeatured}
-                                        editFilm={editFilm}
-                                        removeFilm={removeFilm}/>)
+                                        toggleFeatured={toggleFeatured}/>)
         )
         }
     </div>

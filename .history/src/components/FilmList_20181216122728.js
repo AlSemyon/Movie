@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import FilmCard from './FilmCard';
 import Message from './Message';
 
-const FilmList = ({films, toggleFeatured, editFilm, removeFilm}) => (
+const FilmList = ({films, toggleFeatured}) => (
     <div className="ui cards four">
         { films.length === 0 ?
         (
@@ -13,9 +13,7 @@ const FilmList = ({films, toggleFeatured, editFilm, removeFilm}) => (
         : (
             films.map(film => <FilmCard key={film.id} 
                                         film={film} 
-                                        toggleFeatured={toggleFeatured}
-                                        editFilm={editFilm}
-                                        removeFilm={removeFilm}/>)
+                                        toggleFeatured={toggleFeatured}/>)
         )
         }
     </div>
@@ -23,9 +21,7 @@ const FilmList = ({films, toggleFeatured, editFilm, removeFilm}) => (
 
 FilmList.propTypes = {
     films: PropTypes.array.isRequired,
-    toggleFeatured: PropTypes.func.isRequired,
-    editFilm: PropTypes.func.isRequired,
-    removeFilm: PropTypes.func.isRequired
+    toggleFeatured: PropTypes.func.isRequired
 }
 
 FilmList.defaultProps = {

@@ -42,9 +42,7 @@ FilmCard.propTypes = {
         im: PropTypes.string.isRequired,
         featured: PropTypes.bool.isRequired
     }).isRequired,
-    toggleFeatured: PropTypes.func.isRequired,
-    editFilm: PropTypes.func.isRequired,
-    removeFilm: PropTypes.func.isRequired
+    toggleFeatured: PropTypes.func.isRequired
 }
 
 export default FilmCard;

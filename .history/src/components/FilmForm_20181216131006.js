@@ -34,9 +34,9 @@ class FilmForm extends Component {
     }
 
     static  getDerivedStateFromProps(nextProps, state) {
-        console.log(state.id)
+        console.log(state.date.id)
 
-        if (nextProps.film.id && nextProps.film.id !== state.data.id) {
+        if (nextProps.film.id && nextProps.film.id !== state.date.id) {
             return {
                 data: nextProps.film
             }
