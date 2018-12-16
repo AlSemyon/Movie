@@ -21,8 +21,8 @@ class FilmForm extends Component {
         let errors = {};
         if(!data.title) errors.title = "This field cann`t be blank";
         if(!data.description) errors.description = "This field cann`t be blank";
-        if(!data.duration > 0) errors.duration = "Too soer, isn`t it?";
-        if(!data.price > 0) errors.price = "Too cheap, isn`t it?";
+        if(!data.duration <= 0) errors.duration = "Too soer, isn`t it?";
+        if(!data.price <= 0) errors.price = "Too cheap, isn`t it?";
         if(!data.director) errors.director = "This field cann`t be blank";
         return errors;
     }

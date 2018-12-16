@@ -1,10 +1,10 @@
 import _orderBy from 'lodash/orderBy';
-import {generate as id} from 'shortid';
 import React, { Component } from 'react';
 import data from '../data';
 import FilmList from './FilmList';
 import FilmForm from './FilmForm';
 import Nav from './Nav';
+import generate as id from 'shortId';
 
 class App extends Component {
     state = {
@@ -33,8 +33,7 @@ class App extends Component {
     })
 
     saveFilm = (film) => this.setState({
-        films: this.sortFilms([...this.state.films, {...film, id: id()}]),
-        showForm: false
+        films: this.sortFilms([...this.state.films, {...film, id: id()}])
     })
     render() {
         let {films} = this.state;
@@ -45,7 +44,7 @@ class App extends Component {
             <div className="ui container">
                 <Nav showForm={this.showForm}/>
                 {
-                    this.state.showForm ? <FilmForm saveFilm={this.saveFilm} closeForm={this.closeForm}/> : null
+                    this.state.showForm ? <FilmForm closeForm={this.closeForm}/> : null
                 }
                 
                 <FilmList films={films}

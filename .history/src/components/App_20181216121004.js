@@ -45,7 +45,7 @@ class App extends Component {
             <div className="ui container">
                 <Nav showForm={this.showForm}/>
                 {
-                    this.state.showForm ? <FilmForm saveFilm={this.saveFilm} closeForm={this.closeForm}/> : null
+                    this.state.showForm ? <FilmForm closeForm={this.closeForm}/> : null
                 }
                 
                 <FilmList films={films}
