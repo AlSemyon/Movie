@@ -16,21 +16,14 @@ class FilmForm extends Component {
         errors: {}
     }
 
-    validate = (data) => {
-        let errors = {};
-        if(!data.title) errors.title = "This field cann`t be blank";
-        if(!data.description) errors.description = "This field cann`t be blank";
-        if(!data.duration <= 0) errors.duration = "Too soer, isn`t it?";
-        if(!data.price <= 0) errors.price = "Too cheap, isn`t it?";
-        if(!data.director) errors.director = "This field cann`t be blank";
-        return errors;
-    }
-    handleChange = ({ target }) => this.setState(({data}) => ({
-        data: target.type === 'number' ?
-        {...data,  [target.name]: parseFloat(target.value)}
-        :
-        {...data,  [target.name]: target.value}
+    handleChange = ({ target }) => this.setState((this.state) => ({
+
     }))
+
+    handleChange = ({ target }) => this.setState({
+        [target.name]: target.type === 'number' ?
+            parseFloat(target.value) : target.value
+    })
 
     handleToggleChange = ({ target }) => this.setState({
         data: {...this.state.data, [target.name]: !this.state.data[target.name]}
@@ -38,15 +31,10 @@ class FilmForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        let errors = this.validate(this.state.data);
-        this.setState({errors})
-        if (Object.keys(errors).length === 0) {
-            console.log(this.state.data)
-        }
     }
 
     render() {
-        const {data, errors} = this.state;
+        const {title, description, duration, price, director, featured, im} = this.state;
         return (
             <div className="ui grid">
                 <div className="sixteen wide column">
@@ -58,7 +46,7 @@ class FilmForm extends Component {
                                    type="text"
                                    name="title"
                                    onChange={this.handleChange}
-                                   value={data.title}/>
+                                   value={title}/>
                         </div>
                         <div className="field">
                             <label htmlFor="description">Film description</label>
@@ -67,7 +55,7 @@ class FilmForm extends Component {
                                    type="text"
                                    name="description"
                                    onChange={this.handleChange}
-                                   value={data.description}/>
+                                   value={description}/>
                         </div>
                         <div className="field">
                             <label htmlFor="duration">Film duration</label>
@@ -76,7 +64,7 @@ class FilmForm extends Component {
                                    type="number"
                                    name="duration"
                                    onChange={this.handleChange}
-                                   value={data.duration}/>
+                                   value={duration}/>
                         </div>
                         <div className="field">
                             <label htmlFor="price">Film price</label>
@@ -85,7 +73,7 @@ class FilmForm extends Component {
                                    type="number"
                                    name="price"
                                    onChange={this.handleChange}
-                                   value={data.price}/>
+                                   value={price}/>
                         </div>
                         <div className="field">
                             <label htmlFor="director">Film director</label>
@@ -94,7 +82,7 @@ class FilmForm extends Component {
                                    type="text"
                                    name="director"
                                    onChange={this.handleChange}
-                                   value={data.director}/>
+                                   value={director}/>
                         </div>
 
                         <div className="field">
@@ -103,7 +91,7 @@ class FilmForm extends Component {
                                    type="checkbox"
                                    name="featured"
                                    onChange={this.handleToggleChange}
-                                   checked={data.featured}/>
+                                   checked={featured}/>
                         </div>
 
                         <div className="field">
@@ -113,11 +101,11 @@ class FilmForm extends Component {
                                    type="text"
                                    name="im"
                                    onChange={this.handleChange}
-                                   value={data.im}/>
+                                   value={im}/>
                         </div>
 
                         <ReactImageFallback
-                            src={data.im}
+                            src={im}
                             alt="film poster"
                             className="ui image"
                             fallbackImage='http://via.placeholder.com/290x360'
