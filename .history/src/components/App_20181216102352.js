@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import data from '../data';
 import FilmList from './FilmList';
 import FilmForm from './FilmForm';
-import Nav from './Nav';
 
 class App extends Component {
     state = {
@@ -20,9 +19,7 @@ class App extends Component {
     showForm = () => this.setState({
         showForm: !this.state.showForm
     })
-
-    closeForm = () => this.setState({showForm: false})
-
+    
     sortFilms = (films) => _orderBy(films, ['featured', 'title'], ['desc', 'asc']);
     
     toggleFeatured = (id) =>this.setState({
@@ -38,11 +35,7 @@ class App extends Component {
         }
         return (
             <div className="ui container">
-                <Nav showForm={this.showForm}/>
-                {
-                    this.state.showForm ? <FilmForm closeForm={this.closeForm}/> : null
-                }
-                
+                <FilmForm/>
                 <FilmList films={films}
                           toggleFeatured={this.toggleFeatured}/>
             </div>

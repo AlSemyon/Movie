@@ -21,8 +21,6 @@ class App extends Component {
         showForm: !this.state.showForm
     })
 
-    closeForm = () => this.setState({showForm: false})
-
     sortFilms = (films) => _orderBy(films, ['featured', 'title'], ['desc', 'asc']);
     
     toggleFeatured = (id) =>this.setState({
@@ -40,7 +38,7 @@ class App extends Component {
             <div className="ui container">
                 <Nav showForm={this.showForm}/>
                 {
-                    this.state.showForm ? <FilmForm closeForm={this.closeForm}/> : null
+                    this.state.showForm ? <FilmForm /> : null
                 }
                 
                 <FilmList films={films}

@@ -104,7 +104,7 @@ class FilmForm extends Component {
                         />
                         <div className="field">
                             <button className="ui button">Create Film</button>
-                            <div className="or"/>
+                            <div className="or"/></div>
                             <button className="ui button">Close</button>
                         </div>
                     </form>

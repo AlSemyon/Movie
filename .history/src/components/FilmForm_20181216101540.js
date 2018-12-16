@@ -103,9 +103,7 @@ class FilmForm extends Component {
                             fallbackImage='http://via.placeholder.com/290x360'
                         />
                         <div className="field">
-                            <button className="ui button">Create Film</button>
-                            <div className="or"/>
-                            <button className="ui button">Close</button>
+                            <button className="ui button">Send</button>
                         </div>
                     </form>
                 </div>
