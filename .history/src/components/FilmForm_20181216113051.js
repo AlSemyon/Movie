@@ -68,7 +68,7 @@ class FilmForm extends Component {
                                    name="description"
                                    onChange={this.handleChange}
                                    value={data.description}/>
-                            <FormMessage content={errors.description} type="error"/>
+                            <FormMessage content={errors.title} type="error"/>
                         </div>
                         <div className="field">
                             <label htmlFor="duration">Film duration</label>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactImageFallback from 'react-image-fallback'
 import PropTypes from 'prop-types';
-import FormMessage from './FormMessage';
 
 class FilmForm extends Component {
     state = {
@@ -26,12 +25,12 @@ class FilmForm extends Component {
         if(!data.director) errors.director = "This field cann`t be blank";
         return errors;
     }
-    handleChange = ({ target }) => this.setState(({data, errors}) => ({
+    handleChange = ({ target }) => this.setState(({data}) => ({
         data: target.type === 'number' ?
         {...data,  [target.name]: parseFloat(target.value)}
         :
         {...data,  [target.name]: target.value},
-        errors: {...errors, [target.name]: ''}
+        errors: {...errors, [target.name: '']}
     }))
 
     handleToggleChange = ({ target }) => this.setState({
@@ -42,6 +41,9 @@ class FilmForm extends Component {
         e.preventDefault();
         let errors = this.validate(this.state.data);
         this.setState({errors})
+        if (Object.keys(errors).length === 0) {
+            console.log(this.state.data)
+        }
     }
 
     render() {
@@ -58,7 +60,6 @@ class FilmForm extends Component {
                                    name="title"
                                    onChange={this.handleChange}
                                    value={data.title}/>
-                            <FormMessage content={errors.title} type="error"/>
                         </div>
                         <div className="field">
                             <label htmlFor="description">Film description</label>
@@ -68,7 +69,6 @@ class FilmForm extends Component {
                                    name="description"
                                    onChange={this.handleChange}
                                    value={data.description}/>
-                            <FormMessage content={errors.description} type="error"/>
                         </div>
                         <div className="field">
                             <label htmlFor="duration">Film duration</label>
@@ -78,7 +78,6 @@ class FilmForm extends Component {
                                    name="duration"
                                    onChange={this.handleChange}
                                    value={data.duration}/>
-                            <FormMessage content={errors.duration} type="error"/>
                         </div>
                         <div className="field">
                             <label htmlFor="price">Film price</label>
@@ -88,7 +87,6 @@ class FilmForm extends Component {
                                    name="price"
                                    onChange={this.handleChange}
                                    value={data.price}/>
-                            <FormMessage content={errors.price} type="error"/>
                         </div>
                         <div className="field">
                             <label htmlFor="director">Film director</label>
@@ -98,11 +96,10 @@ class FilmForm extends Component {
                                    name="director"
                                    onChange={this.handleChange}
                                    value={data.director}/>
-                            <FormMessage content={errors.director} type="error"/>
                         </div>
 
                         <div className="field">
-                            <label htmlFor="featured">Featured</label>
+                            <label htmlFor="featured">Film director</label>
                             <input id="featured"
                                    type="checkbox"
                                    name="featured"
